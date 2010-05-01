@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale:0.25, maximum-scale:1.6, user-scalable=yes;" />
+		<meta name="author" content="Gordon Mei" />
+		<title>Flash Gordon - Studio Gordon Mei - Lab</title>
+		<style type="text/css">
+			* {margin:0; padding:0; font:normal 14pt "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif; font-weight:300;}
+			body {margin:2em 5em;}
+			a:link, a:visited, a:focus, a:active {color:#009aff;}
+			a:hover {color:#ff5c80; text-decoration:line-through;}
+			#gordoncanvas {margin:0 auto;}
+			#sosumi {margin:1em 0;}
+			#sosumi a:hover {text-decoration:none; color:#abc;}
+			#sosumi, #sosumi a, #sosumi p, #sosumi p a {font-size:10pt;}
+			#sosumi p, #sosumi p a {color:#999; font-style:italic;}
+
+			@media only screen and (max-device-width:480px) {body {margin:1em 0.3em;}}
+		</style>
+
+		<link rel="shortcut icon" href="../../favico.png" type="image/png" />
+	</head>
+	<body>
+		<canvas width="550" height="650" id="gordoncanvas"></canvas>
+
+		<div id="sosumi">2010. <a href="http://www.monstercyb.org/gordon/lab">Monstercyb.org</a>. A part of the <a href="http://www.ocf.berkeley.edu/~gordeon">GordeonBleu</a> network.<p>HTML5 canvas. Created by hand, but very time-consuming.</p></div>
+
+
+		<script type="text/javascript">
+			var gordoncanvas = document.getElementById("gordoncanvas");
+			var gordoncontext = gordoncanvas.getContext("2d");
+			var gordoncontexttwo = gordoncanvas.getContext("2d");
+
+			/* Panel Left */
+			gordoncontext.beginPath();
+			gordoncontext.moveTo(0,200);
+			gordoncontext.lineTo(225,350);
+			gordoncontext.lineTo(225,600);
+			gordoncontext.lineTo(0,388);
+			gordoncontext.closePath();
+			gordoncontext.fillStyle = "#457fbb";
+			gordoncontext.fill();
+
+			/* Panel Right */
+			gordoncontext.beginPath();
+			gordoncontext.moveTo(465,210);
+			gordoncontext.lineTo(225,350);
+			gordoncontext.lineTo(225,600);
+			gordoncontext.lineTo(465,388);
+			gordoncontext.closePath();
+			gordoncontext.fillStyle = "#214d8d";
+			gordoncontext.fill();
+
+			/* Panel Top */
+			gordoncontext.beginPath();
+			gordoncontext.moveTo(0,200);
+			gordoncontext.lineTo(225,350);
+			gordoncontext.lineTo(465,210);
+			gordoncontext.lineTo(225,130);
+			gordoncontext.closePath();
+			gordoncontext.fillStyle = "#eee";
+			gordoncontext.fill();
+
+
+
+			/* Lego studs */
+			function gordonbezier(centerX, centerY, scaly) {
+				gordoncontext.beginPath();
+
+				corneruprightX = centerX * 2;
+				corneruprightY = centerY;
+
+				var height = 20 * scaly;
+				var diameter = 100 * scaly;
+				var endcontrolptdist = 5 * scaly;
+				var midcontrolptdist = 45 * scaly;
+				var sidecolor = "#224a7c";
+
+				// Lower Right (right to center)
+				gordoncontext.moveTo(corneruprightX,corneruprightY);
+				gordoncontext.bezierCurveTo(corneruprightX-endcontrolptdist,corneruprightY+height,corneruprightX-midcontrolptdist,corneruprightY+height,corneruprightX-midcontrolptdist-endcontrolptdist,corneruprightY+height);
+
+				// Lower Left (center to left)
+				gordoncontext.bezierCurveTo(corneruprightX-diameter+midcontrolptdist,corneruprightY+height,corneruprightX-diameter+endcontrolptdist,corneruprightY+height,corneruprightX-diameter,corneruprightY);
+
+				// Shift down the height
+				gordoncontext.lineTo(corneruprightX-diameter,corneruprightY+height);
+
+				// Lower Lower Left (left to center)
+				gordoncontext.bezierCurveTo(corneruprightX-diameter+endcontrolptdist,corneruprightY+height+height,corneruprightX-diameter+midcontrolptdist,corneruprightY+height+height,corneruprightX-diameter+midcontrolptdist+endcontrolptdist,corneruprightY+height+height);
+
+				// Lower Lower Right (center to right)
+				gordoncontext.bezierCurveTo(corneruprightX-midcontrolptdist,corneruprightY+height+height,corneruprightX-endcontrolptdist,corneruprightY+height+height,corneruprightX,corneruprightY+height);
+
+				// Shift back up the height
+				gordoncontext.lineTo(corneruprightX,corneruprightY);
+
+				gordoncontext.closePath();
+				gordoncontext.fillStyle = sidecolor;
+				gordoncontext.fill();
+			}
+
+			/* Stud Left Corner */
+			gordonbezier(85,200,1.0);
+
+			/* Stud Right Corner */
+			gordonbezier(200,200,1.0);
+
+			/* Stud Bottom Corner */
+			gordonbezier(145,250,1.3);
+
+			/* Stud Top Corner */
+			gordonbezier(140,160,0.9);
+
+
+
+			/* Question Marks */
+			gordoncontext.font = "bold 150pt serif";
+			gordoncontext.fillStyle = "#eee";
+			gordoncontext.fillText("?", 60, 450);
+			gordoncontext.fillText("?", 300, 450);
+			// need to skew this text
+		</script>
+
+		<!--Created: 2010 April 30-->
+
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-299058-9");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+	</body>
+</html>
