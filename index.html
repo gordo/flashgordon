@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale:0.25, maximum-scale:1.6, user-scalable=yes;" />
 		<meta name="author" content="Gordon Mei" />
-		<title>Flash Gordon - Studio Gordon Mei - Lab</title>
+		<title>Flash Gordon - Blue Lego Bricks with No Flash Plugin Using Canvas - Studio Gordon Mei - Lab</title>
 		<style type="text/css">
 			* {margin:0; padding:0; font:normal 14pt "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial",sans-serif; font-weight:300;}
 			body {margin:2em 5em;}
@@ -30,7 +30,6 @@
 		<script type="text/javascript">
 			var gordoncanvas = document.getElementById("gordoncanvas");
 			var gordoncontext = gordoncanvas.getContext("2d");
-			var gordoncontexttwo = gordoncanvas.getContext("2d");
 
 			/* Panel Left */
 			gordoncontext.beginPath();
@@ -118,12 +117,15 @@
 			/* Question Marks */
 			gordoncontext.font = "bold 150pt serif";
 			gordoncontext.fillStyle = "#eee";
-			gordoncontext.fillText("?", 60, 450);
-			gordoncontext.fillText("?", 300, 450);
-			// need to skew this text
+			gordoncontext.setTransform (1, 0.7, 0, 1, 0, 0);
+			gordoncontext.fillText("?", 60, 380);
+			gordoncontext.setTransform (1, -0.7, 0, 1, 0, 0);
+			gordoncontext.fillText("?", 300, 700);
+			gordoncontext.setTransform (1, 0, 0, 1, 0, 0);
 		</script>
 
 		<!--Created: 2010 April 30-->
+		<!--Revised: 2010 May 2 (fixed text skewing)-->
 
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

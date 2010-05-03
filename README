@@ -1,1 +1,4 @@
 2010 April 30. The no-Flash-plugin-available blue Lego brick recreated using the canvas tag from HTML5.
+Tested as working in: Safari, Chrome, Firefox, Opera 10.5+
+Working except for lack of fillText support: Camino, Opera before 10.5, MobileSafari
+Canvas not supported in: IE8/7/6
